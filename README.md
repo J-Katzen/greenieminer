@@ -7,4 +7,4 @@ Claymore Zcash Miner - https://drive.google.com/drive/folders/0B69wv2iqszefdmJic
 Put miners into miners/ seperated by algo.
 
 eth miner goes into miners/eth/claymore
-zec miner goes into mienrs/equihash/claymore
+zec miner goes into miners/equihash/claymore
