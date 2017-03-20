@@ -3,7 +3,7 @@
   "version": "0.2.5",
   "description": "A sample Node.js app using Express 4",
   "engines": {
-    "node": "6.10.0"
+    "node": "v7.7.3"
   },
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "ejs": "2.4.1",
     "express": "4.13.3",
     "lodash": "^4.17.2",
-    "node-netcat": "^1.4.8"
+    "node-netcat": "^1.4.8",
+    "public-ip": "^2.3.3"
   },
   "repository": {
     "type": "git",
