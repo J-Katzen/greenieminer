@@ -26,4 +26,4 @@ Manual Deployment:
 
 - Nodejs >= v7
 - Install [Yarn](https://yarnpkg.com/lang/en/docs/install/)
-- Run yarn to install nodejs packages
+- Run `yarn` to install nodejs packages
