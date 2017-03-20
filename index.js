@@ -118,7 +118,7 @@ function profitabilityCheck() {
 
 
     //console.log(current);
-   
+
 
  var buffer = read.sync(process.cwd() + '\\' + 'test.txt', 'utf8');
     buffer.toString('hex');
@@ -130,7 +130,6 @@ function profitabilityCheck() {
 var p = new Promise(function(resolve, reject) {
 
 
-  
   // Do an async task async task and then...
     var Netcat = require('node-netcat');
     var client = Netcat.client(3333, 'localhost');
@@ -194,7 +193,7 @@ var p = new Promise(function(resolve, reject) {
     client.on('close', function() {
         //console.log('close');
 
-       
+
     });
     client.start();
 
@@ -206,7 +205,7 @@ var p = new Promise(function(resolve, reject) {
   }
 });
 
-p.then(function() { 
+p.then(function() {
   console.log("works");
   checkMostProfitable();
   /* do something with the result */
@@ -548,7 +547,7 @@ function editConfig(task) {
                   counter = 0;
                  // setTimeout(profitabilityCheck, 18000);
                 }
-                
+
             }
 
             if (task == stats) {
