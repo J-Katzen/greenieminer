@@ -1,5 +1,5 @@
-var MinerHandler = require('./lib/MinerHandler');
-var ProfitChecker = require('./lib/ProfitChecker');
+const ClaymoreMinerHandler = require('./lib/ClaymoreMinerHandler');
+const ProfitChecker = require('./lib/ProfitChecker');
 
 // var minerHandle = new MinerHandler();
 
@@ -20,6 +20,18 @@ var checker = new ProfitChecker(algoHashes, ['UBQ', 'DCR', 'ZEC', 'ETH', 'ETC', 
 //   console.log(maxProfitCoin);
 // });
 
-checker.getCoinsByAlgo('blakexvc').then(function(matchingCoins) {
-  console.log(matchingCoins);
+// log out all the coins associated with this algorithm
+// checker.getCoinsByAlgo('blakexvc').then(function(matchingCoins) {
+//   console.log(matchingCoins);
+// });
+
+// Try spawning miner and logging out its io
+var miner = new ClaymoreMinerHandler('ETHMINER');
+
+miner.minerProcess.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+miner.minerProcess.stderr.on('data', (data) => {
+  console.log(`stderr: ${data}`);
 });
