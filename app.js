@@ -37,7 +37,7 @@ var miner = new ClaymoreMinerHandler('ETHMINER', '72.193.192.26');
 // });
 
 miner.getMinerStats().then((data) => {
-  console.log(data);
+  console.log(data.result);
 }).catch((err) => {
   console.error(err);
 });
