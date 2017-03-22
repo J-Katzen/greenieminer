@@ -26,7 +26,7 @@ var checker = new ProfitChecker(algoHashes, ['UBQ', 'DCR', 'ZEC', 'ETH', 'ETC', 
 // });
 
 // Try spawning miner and logging out its io
-var miner = new ClaymoreMinerHandler('ethash', '72.193.192.26');
+var miner = new ClaymoreMinerHandler('ethash');
 
 // miner.minerProcess.stdout.on('data', (data) => {
 //   console.log(`stdout: ${data}`);
@@ -36,8 +36,8 @@ var miner = new ClaymoreMinerHandler('ethash', '72.193.192.26');
 //   console.log(`stderr: ${data}`);
 // });
 
-miner.parseMinerStats().then((data) => {
+setTimeout(() => miner.parseMinerStats().then((data) => {
   console.log(data);
 }).catch((err) => {
   console.error(err);
-});
+}), 20000);
