@@ -1,3 +1,6 @@
+// config .env
+require('dotenv').config();
+
 const ClaymoreMinerHandler = require('./lib/ClaymoreMinerHandler');
 const ProfitChecker = require('./lib/ProfitChecker');
 
@@ -8,8 +11,7 @@ const ProfitChecker = require('./lib/ProfitChecker');
 const algoHashes = {
   ethash: 900.0,
   equihash: 7000.0,
-  blake14r: 4350.0,
-  lyra2rev2: 2000
+  blake14r: 4350.0
 };
 
 // pass algoHashes object and array of cointags to pick from. omitted ETH as good test
@@ -44,4 +46,4 @@ var miner = new ClaymoreMinerHandler('ethash');
 // }), 20000);
 
 // test swapping miner
-miner.swapMiner('equihash');
+// miner.swapMiner('equihash');
