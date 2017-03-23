@@ -36,8 +36,12 @@ var miner = new ClaymoreMinerHandler('ethash');
 //   console.log(`stderr: ${data}`);
 // });
 
-setTimeout(() => miner.parseMinerStats().then((data) => {
-  console.log(data);
-}).catch((err) => {
-  console.error(err);
-}), 20000);
+// test parse stats for miner
+// setTimeout(() => miner.parseMinerStats().then((data) => {
+//   console.log(data);
+// }).catch((err) => {
+//   console.error(err);
+// }), 20000);
+
+// test swapping miner
+miner.swapMiner('equihash');
