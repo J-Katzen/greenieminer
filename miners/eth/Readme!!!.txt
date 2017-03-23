@@ -1,4 +1,4 @@
-Claymore's Dual Ethereum + Decred/Siacoin/Lbry AMD+NVIDIA GPU Miner.
+Claymore's Dual Ethereum + Decred/Siacoin/Lbry/Pascal AMD+NVIDIA GPU Miner.
 =========================
 
 
@@ -12,7 +12,7 @@ MEGA: https://mega.nz/#F!O4YA2JgD!n2b4iSHQDruEsYUvTQP5_w
 
 FEATURES:
 
-- Supports new "dual mining" mode: mining both Ethereum and Decred/Siacoin/Lbry at the same time, with no impact on Ethereum mining speed. Ethereum-only mining mode is supported as well.
+- Supports new "dual mining" mode: mining both Ethereum and Decred/Siacoin/Lbry/Pascal at the same time, with no impact on Ethereum mining speed. Ethereum-only mining mode is supported as well.
 - Effective Ethereum mining speed is higher by 3-5% because of a completely different miner code - much less invalid and outdated shares, higher GPU load, optimized OpenCL code.
 - Supports both AMD and nVidia cards, even mixed.
 - No DAG files.
@@ -20,7 +20,7 @@ FEATURES:
 - Supports Ethereum and Siacoin solo mining.
 - Supports both HTTP and Stratum for Decred.
 - Supports both HTTP and Stratum for Siacoin. Note: not all Stratum versions are supported currently for Siacoin.
-- Supports Stratum for Lbry.
+- Supports Stratum for Lbry and Pascal.
 - Supports failover.
 - Displays detailed mining information and hashrate for every card.
 - Supports remote monitoring and management.
@@ -30,11 +30,9 @@ FEATURES:
 
 
 
-This version is POOL/SOLO for Ethereum, POOL for Decred, POOL/SOLO for Siacoin, POOL for Lbry.
+This version is POOL/SOLO for Ethereum, POOL for Decred, POOL/SOLO for Siacoin, POOL for Lbry, POOL for Pascal.
 
 For AMD cards, Catalyst (Crimson) 15.12 is required for best performance and compatibility. You can get very bad results for different drivers version, or miner can fail on startup.
-For nVidia cards, 368.81 driver is recommended for best performance and compatibility.
-
 For AMD cards, set the following environment variables, especially if you have 2GB cards:
 
 GPU_FORCE_64BIT_PTR 0
@@ -46,9 +44,10 @@ GPU_SINGLE_ALLOC_PERCENT 100
 For multi-GPU systems, set Virtual Memory size in Windows at least 16 GB:
 "Computer Properties / Advanced System Settings / Performance / Advanced / Virtual Memory".
 
-This miner is free-to-use, however, current developer fee is 1% for Ethereum-only mining mode (-mode 1) and 2% for Ethereum+Decred mining mode (-mode 0), every hour the miner mines for 36 or 72 seconds for developer. 
-Decred is mined without developer fee.
-If you don't agree with the dev fee - don't use this miner.
+This miner is free-to-use, however, current developer fee is 1% for Ethereum-only mining mode (-mode 1) and 2% for dual mining mode (-mode 0), every hour the miner mines for 36 or 72 seconds for developer. 
+Decred/Siacoin/Lbry/Pascal is mined without developer fee.
+If you don't agree with the dev fee - don't use this miner, or use "-nofee" option.
+Attempts to cheat and remove dev fee will cause a bit slower mining speed (same as "-nofee 1") though miner will show same hashrate.
 
 This version is for recent AMD videocards only: 7xxx, 2xx and 3xx, 2GB or more. Recent nVidia videocards are supported as well.
 
@@ -73,7 +72,7 @@ COMMAND LINE OPTIONS:
 -esm	Ethereum Stratum mode. 0 - eth-proxy mode (for example, dwarpool.com), 1 - qtminer mode (for example, ethpool.org), 
 	2 - miner-proxy mode (for example, coinotron.com), 3 - nicehash mode. 0 is default. 
 
--etha	Ethereum algorithm mode. 0 - optimized for fast cards, 1 - optimized for slow cards, 2 - for gpu-pro Linux drivers. -1 - autodetect (default, automatically selects between 0 and 1). 
+-etha	Ethereum algorithm mode for AMD cards. 0 - optimized for fast cards, 1 - optimized for slow cards, 2 - for gpu-pro Linux drivers. -1 - autodetect (default, automatically selects between 0 and 1). 
 	You can also set this option for every card individually, for example "-etha 0,1,0".
 
 -ethi	Ethereum intensity. Default value is 8, you can decrease this value if you don't want Windows to freeze or if you have problems with stability. The most low GPU load is "-ethi 0".
@@ -101,12 +100,12 @@ COMMAND LINE OPTIONS:
 
 -estale	send Ethereum stale shares to pool, it can increase effective hashrate a bit. Default value is "1", set "-estale 0" if you don't want to send stale shares.
 
--dpool 	Decred/Siacoin/Lbry pool address. Use "http://" prefix for HTTP pools, "stratum+tcp://" for Stratum pools. If prefix is missed, Stratum is assumed.
+-dpool 	Decred/Siacoin/Lbry/Pascal pool address. Use "http://" prefix for HTTP pools, "stratum+tcp://" for Stratum pools. If prefix is missed, Stratum is assumed.
 	Decred: both Stratum and HTTP are supported. Siacoin: both Stratum and HTTP are supported, though note that not all Stratum versions are supported currently. Lbry: only Stratum is supported.
 
--dwal	Your Decred/Siacoin/Lbry wallet address or worker name, it depends on pool.
+-dwal	Your Decred/Siacoin/Lbry/Pascal wallet address or worker name, it depends on pool.
 
--dpsw 	Password for Decred/Siacoin/Lbry pool.
+-dpsw 	Password for Decred/Siacoin/Lbry/Pascal pool.
 
 -di 	GPU indexes, default is all available GPUs. For example, if you have four GPUs "-di 02" will enable only first and third GPUs (#0 and #2).
 	Use "-di detect" value to detect correct GPU order for temperatures management (requires non-zero "-tt" option); note that it will not work properly if you do not want to assign all GPUs to miner.
@@ -119,9 +118,9 @@ COMMAND LINE OPTIONS:
 	"-mode 0" (default) means dual Ethereum + Decred/Siacoin/Lbry mining mode.
 	"-mode 1" means Ethereum-only mining mode. You can set this mode for every card individually, for example, "-mode 1-02" will set mode "1" for first and third GPUs (#0 and #2).
 
--dcoin	select second coin to mine in dual mode. Possible options are "-dcoin dcr", "-dcoin sc", "-dcoin lbc". Default value is "dcr".
+-dcoin	select second coin to mine in dual mode. Possible options are "-dcoin dcr", "-dcoin sc", "-dcoin lbc", "-dcoin pasc". Default value is "dcr".
 
--dcri	Decred/Siacoin/Lbry intensity. Default value is 30, you can adjust this value to get the best Decred/Siacoin/Lbry mining speed without reducing Ethereum mining speed. 
+-dcri	Decred/Siacoin/Lbry/Pascal intensity. Default value is 30, you can adjust this value to get the best Decred/Siacoin/Lbry mining speed without reducing Ethereum mining speed. 
 	You can also specify values for every card, for example "-dcri 30,100,50".
 	You can change the intensity in runtime with "+" and "-" keys and check current statistics with "s" key.
 	For example, by default (-dcri 30) 390 card shows 29MH/s for Ethereum and 440MH/s for Decred. Setting -dcri 70 causes 24MH/s for Ethereum and 850MH/s for Decred.
@@ -138,22 +137,36 @@ COMMAND LINE OPTIONS:
 	"-r 1" closes miner and execute "reboot.bat" file ("reboot.bash" or "reboot.sh" for Linux version) in the miner directory (if exists) if some GPU failed. 
 	So you can create "reboot.bat" file and perform some actions, for example, reboot system if you put this line there: "shutdown /r /t 5 /f".
 
+-retrydelay	delay, in seconds, between connection attempts. Default values is "20". Specify "-retrydelay -1" if you don't need reconnection, in this mode miner will exit if connection is lost.
+
 -dbg	debug log and messages. "-dbg 0" - (default) create log file but don't show debug messages. 
 	"-dbg 1" - create log file and show debug messages. "-dbg -1" - no log file and no debug messages.
 
 -logfile debug log file name. After restart, miner will append new log data to the same file. If you want to clear old log data, file name must contain "noappend" string.
 	If missed, default file name will be used.
 
+-nofee	set "1" to cancel my developer fee at all. In this mode some optimizations are disabled so mining speed will be slower by about 4%. 
+	By enabling this mode, I will lose 100% of my earnings, you will lose only 2-3% of your earnings.
+	So you have a choice: "fastest miner" or "completely free miner but a bit slower".
+	If you want both "fastest" and "completely free" you should find some other miner that meets your requirements, just don't use this miner instead of claiming that I need 
+	to cancel/reduce developer fee, saying that 1-2% developer fee is too much for this miner and so on.
+
+-benchmark	benchmark mode, specify "-benchmark 1" to see hashrate for your hardware. You can also specify epoch number for benchmark, for example, "-benchmark 110".
+
 -li	low intensity mode. Reduces mining intensity, useful if your cards are overheated. Note that mining speed is reduced too. 
 	More value means less heat and mining speed, for example, "-li 10" is less heat and mining speed than "-li 1". You can also specify values for every card, for example "-li 3,10,50".
 	Default value is "0" - no low intensity mode.
+
+-lidag	low intensity mode for DAG generation, it can help with OC or weak PSU. Supported values are 0, 1, 2, 3, more value means lower intensity. Example: "-lidag 1".
+	You can also specify values for every card, for example "-lidag 1,0,3". Default value is "0" (no low intensity for DAG generation).
 
 -tt	set target GPU temperature. For example, "-tt 80" means 80C temperature. You can also specify values for every card, for example "-tt 70,80,75".
 	You can also set static fan speed if you specify negative values, for example "-tt -50" sets 50% fan speed. Specify zero to disable control and hide GPU statistics.
 	"-tt 1" (default) does not manage fans but shows GPU temperature and fan status every 30 seconds. Specify values 2..5 if it is too often.
 	Note: for NVIDIA cards only temperature monitoring is supported, temperature management is not supported.
+	Note: for Linux gpu-pro drivers, miner must have root access to manage fans, otherwise only monitoring will be available.
 
--ttdcr	reduce Decred/Siacoin intensity automatically if GPU temperature is above specified value. For example, "-ttdcr 80" reduces Decred intensity if GPU temperature is above 80C. 
+-ttdcr	reduce Decred/Siacoin/Lbry/Pascal intensity automatically if GPU temperature is above specified value. For example, "-ttdcr 80" reduces Decred intensity if GPU temperature is above 80C. 
 	You can see current Decred intensity coefficients in detailed statistics ("s" key). So if you set "-dcri 50" but Decred/Siacoin intensity coefficient is 20% it means that GPU currently mines Decred/Siacoin at "-dcri 10".
 	You can also specify values for every card, for example "-ttdcr 80,85,80". You also should specify non-zero value for "-tt" option to enable this option.
 	It is a good idea to set "-ttdcr" value higher than "-tt" value by 3-5C.
@@ -175,6 +188,10 @@ COMMAND LINE OPTIONS:
 	This option works only if miner manages cooling, i.e. when "-tt" option is used to specify target temperature. Default value is "100".
 	Note: for NVIDIA cards this option is not supported.
 
+-fanmin	set minimal fan speed, in percents, for example, "-fanmin 50" will set minimal fans speed to 50%. You can also specify values for every card, for example "-fanmin 50,60,70".
+	This option works only if miner manages cooling, i.e. when "-tt" option is used to specify target temperature. Default value is "0".
+	Note: for NVIDIA cards this option is not supported.
+
 -cclock	set target GPU core clock speed, in MHz. If not specified or zero, miner will not change current clock speed. You can also specify values for every card, for example "-cclock 1000,1050,1100,0".
 	Unfortunately, AMD blocked underclocking for some reason, you can overclock only.
 	Note: for NVIDIA cards this option is not supported.
@@ -192,8 +209,15 @@ COMMAND LINE OPTIONS:
 -mvddc	set target GPU memory voltage, multiplied by 1000. For example, "-mvddc 1050" means 1.05V. You can also specify values for every card, for example "-mvddc 900,950,1000,970". Supports latest AMD 4xx cards only in Windows.
 	Note: for NVIDIA cards this option is not supported.
 
--mport	remote monitoring/management port. Default port is 3333, specify "-mport 0" to disable remote monitoring/management feature. 
+-mport	remote monitoring/management port. Default value is -3333 (read-mode), specify "-mport 0" to disable remote monitoring/management feature. 
 	Specify negative value to enable monitoring (get statistics) but disable management (restart, uploading files), for example, "-mport -3333" enables port 3333 for remote monitoring, but remote management will be blocked.
+	You can also use your web browser to see current miner state, for example, type "localhost:3333" in web browser. 
+	Warning: use negative option value or disable remote management entirely if you think that you can be attacked via this port!
+	By default, miner will accept connections on specified port on all network adapters, but you can select desired network interface directly, for example, "-mport 127.0.0.1:3333" opens port on localhost only.
+
+-colors enables or disables colored text in console. Default value is "1", use "-colors 0" to disable coloring.
+
+-v	displays miner version, sample usage: "-v 1".
 
 
 
@@ -204,6 +228,7 @@ If there are not any command line options, miner will check "config.txt" file fo
 If there is only one option in the command line, it must be configuration file name.
 If there are two or more options in the command line, miner will take all options from the command line, not from configuration file.
 Place one option per line, if first character of a line is ";" or "#", this line will be ignored. 
+You can also use environment variables in "epools.txt" and "config.txt" files. For example, define "WORKER" environment variable and use it as "%WORKER%" in config.txt or in epools.txt.
 
 
 
@@ -246,7 +271,7 @@ EthDcrMiner64.exe -epool eu1.nanopool.org:9999 -ewal YOUR_ETH_WALLET/YOUR_WORKER
 EthDcrMiner64.exe -epool stratum+tcp://daggerhashimoto.eu.nicehash.com:3353 -ewal 1LmMNkiEvjapn5PRY8A9wypcWJveRrRGWr -epsw x -esm 3 -allpools 1 -estale 0 -dpool stratum+tcp://decred.eu.nicehash.com:3354 -dwal 1LmMNkiEvjapn5PRY8A9wypcWJveRrRGWr
 
  miningpoolhub Ethereum+Siacoin:
-	EthDcrMiner64.exe -epool us-east1.ethereum.miningpoolhub.com:20536 -ewal 0xD69af2A796A737A103F12d2f0BCC563a13900E6F -eworker YourLogin.YourWorkerName -epsw x -allpools 1 -dpool stratum+tcp://hub.miningpoolhub.com:20550 -dwal username.workername -dpsw x
+	EthDcrMiner64.exe -epool us-east1.ethereum.miningpoolhub.com:20536 -ewal 0xD69af2A796A737A103F12d2f0BCC563a13900E6F -eworker YourLogin.YourWorkerName -epsw x -allpools 1 -dpool stratum+tcp://hub.miningpoolhub.com:20550 -dwal username.workername -dpsw x -dcoin sia
 	you must also create worker "YourWorkerName" on pool and specify your wallet address there.
 
  suprnova Ethereum_Classic(ETC)+Siacoin:
@@ -257,6 +282,10 @@ EthDcrMiner64.exe -epool stratum+tcp://daggerhashimoto.eu.nicehash.com:3353 -ewa
 
  coinmine:
 	EthDcrMiner64.exe -epool eth.coinmine.pl:4000 -ewal USERNAME.WORKER -esm 2 -epsw WORKER_PASS -allpools 1 -dpool stratum+tcp://dcr.coinmine.pl:2222 -dwal USERNAME.WORKER -dpsw WORKER_PASS
+
+ ethpool+suprnova Ethereum+Pascal:
+	ethdcrminer64.exe -epool us1.ethpool.org:3333 -ewal 0xD69af2A796A737A103F12d2f0BCC563a13900E6F.YourWorkerName -epsw x -dpool stratum+tcp://pasc.suprnova.cc:5279 -dwal YourLogin.YourWorkerName -dpsw x -dcoin pasc -allpools 1
+
 
 Ethereum-only mining:
 
@@ -284,19 +313,22 @@ Ethereum SOLO mining (assume geth is on 192.168.0.1:8545):
 
 FAILOVER
 
-Use "epools.txt" and "dpools.txt" files to specify additional pools. These files have text format, one pool per line. Every pool has 3 connection attempts.
+Use "epools.txt" and "dpools.txt" files to specify additional pools. These files have text format, one pool per line. Every pool has 3 connection attempts. 
+Miner disconnects automatically if pool does not send new jobs for a long time or if pool rejects too many shares.
 If the first character of a line is ";" or "#", this line will be ignored. 
 Do not change spacing, spaces between parameters and values are required for parsing.
 If you need to specify "," character in parameter value, use two commas - ,, will be treated as one comma.
+You can reload "epools.txt" and "dpools.txt" files in runtime by pressing "r" key.
 Pool specified in the command line is "main" pool, miner will try to return to it every 30 minutes if it has to use some different pool from the list. 
 If no pool was specified in the command line then first pool in the failover pools list is main pool.
 You can change 30 minutes time period to some different value with "-ftime" option, or use "-ftime 0" to disable switching to main pool.
+You can also use environment variables in "epools.txt", "dpools.txt" and "config.txt" files. For example, define "WORKER" environment variable and use it as "%WORKER%" in config.txt or in epools.txt.
 
 
 
 REMOTE MONITORING/MANAGEMENT
 
-Miner supports remote monitoring/management via JSON protocol over TCP/IP sockets.
+Miner supports remote monitoring/management via JSON protocol over TCP/IP sockets, HTTP is supported as well
 Start "EthMan.exe" from "Remote management" subfolder (Windows version only).
 Check "Help" tab for built-in help.
 
@@ -309,11 +341,11 @@ KNOWN ISSUES
 And order of GPUs in these lists can be different. There is no way to fix GPUs order automatically, thanks to AMD devs.
 But you can do it manually. For example, if you have two cards, you can change their order by adding "-di 10". Another example, reverse order for six cards: "-di 543210".
 Also you can do it automatically (experimental feature) with "-di detect" option.
-- Linux + gpu-pro drivers: temperature/fan management is not supported. Unfortunately, gpu-pro drivers don't support ADL, so there is no API that can be used for the management.
 - Windows 10 Defender recognizes miner as a virus, some antiviruses do the same. Miner is not a virus, add it to Defender exceptions. 
   I write miners since 2014. Most of them are recognized as viruses by some paranoid antiviruses, perhaps because I pack my miners to protect them from disassembling, perhaps because some people include them into their botnets, or perhaps these antiviruses are not good, I don't know. For these years, a lot of people used my miners and nobody confirmed that my miner stole anything or did something bad. 
   Note that I can guarantee clean binaries only for official links in my posts on this forum (bitcointalk). If you downloaded miner from some other link - it really can be a virus.
   However, my miners are closed-source so I cannot prove that they are not viruses. If you think that I write viruses instead of good miners - do not use this miner, or at least use it on systems without any valuable data.
+- LBC PoW is not very good for dual mining, it causes a bit less Ethereum mining speed.
 
 
 
@@ -407,4 +439,10 @@ This miner does not use HTTP protocol, it uses Stratum directly. So you should c
 
 - Error "server: bind failed with error".
   Specify "-mport 0" option.
+
+- How can I get stats from miner as EthMan does?
+  Start EthMan and catch its tcp/ip data with WireShark, you will see json protocol details.
+
+- I cannot mine Ethereum with 2GB card.
+  Yes, you cannot mine Ethereum or Ethereum Classic with 2GB cards anymore.
 

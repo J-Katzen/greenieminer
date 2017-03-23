@@ -1,6 +1,44 @@
 VERSION HISTORY
 
 
+v12.4 This version is assumed to be stable, so it is not marked as "beta".
+
+---------------------------------------------------------------------
+
+- slightly improved speed for some cards (up to 2%).
+- added "-gmap" option.
+- a few minor improvements.
+
+
+
+v12.3 This version is assumed to be stable, so it is not marked as "beta".
+
+---------------------------------------------------------------------
+
+- slightly improved speed, about 410H/s on stock 390X, 465H/s on stock Nano, 300H/s on stock 280X, 305H/s on stock RX480.
+- improved stability for high "-i" option values, added "-i 9" option value.
+- fixed a few bugs.
+
+
+
+v12.2 
+---------------------------------------------------------------------
+
+- fixed issue with "-ttli" option.
+- improved "-mport" option, now you can specify network adapter IP for incoming connections for remote management.
+- added "-old 1" option, try to use it if v12.0 works stable for you, but v12.1 is unstable.
+
+
+
+v12.1
+---------------------------------------------------------------------
+
+- slightly improved speed for some cards, about 410H/s on stock 390X, 450H/s on stock Nano, 290H/s on stock 280X, 300H/s on stock RX480.
+- slightly improved stability. If it is still unstable for you, reduce "-i" value.
+- fixed issue with wrong hashrate when "-li" or "-ttli" options enabled.
+
+
+
 v12.0
 ---------------------------------------------------------------------
 

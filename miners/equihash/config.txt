@@ -3,6 +3,7 @@
 -zpsw z
 #-tt 75
 #-i 8
-#-allpools 1
+#-powlim 50
 #-a 2
 #-asm 0
+#-allpools 1

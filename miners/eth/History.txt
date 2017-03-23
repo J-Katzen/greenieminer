@@ -1,6 +1,79 @@
 VERSION HISTORY
 
 
+v8.1
+---------------------------------------------------------------------
+
+- added Ethereum+Pascal mode for NVidia cards.
+- improved "-di detect" option: now after GPU order detection miner starts mining with the detected order.
+- now remote management is working in read-only mode by default.
+- improved "-mport" option, now you can specify network adapter IP for incoming connections for remote management.
+- added "-benchmark" option.
+- fixed issue with "-retrydelay" option.
+- added  "-v" option.
+- a few minor bug fixes and improvements.
+- EthMan: added option for font color selection.
+
+
+
+v8.0
+---------------------------------------------------------------------
+
+- added new coin for dual mode: PASCAL(PASC). Now you can mine Ethereum, Ethereum+Decred, Ethereum+Siacoin, Ethereum+Lbry or Ethereum+Pascal. NOTE: Currently Pascal is not available for NVidia cards.
+- added "-nofee" option.
+- added ability to use environment variables in "epools.txt", "dpools.txt" and "config.txt" files. For example, define "WORKER" environment variable and use it as "%WORKER%" in config.txt.
+- added "License.txt" file.
+- some minor improvements.
+
+
+
+v7.4. This version is assumed to be stable, so it is not marked as "beta".
+---------------------------------------------------------------------
+
+- added "-retrydelay" option. 
+- EthMan: added "View miner console" command.
+
+
+
+v7.3. This version is assumed to be stable, so it is not marked as "beta".
+---------------------------------------------------------------------
+
+- now miner supports HTTP for remote monitoring, you can check miner state remotely via browser, check "-mport" option for details.
+- added temperature management for Linux gpu-pro drivers. Note: root access is required to manage fans speed.
+- added "-fanmin" option.
+- fixed issue with "-allcoins exp" option.
+- EthMan: added options for number of decimal points in displayed statistics.
+- some minor improvements and bug fixes.
+
+
+
+v7.2
+---------------------------------------------------------------------
+
+- added "-lidag" option to reduce intensity of DAG generation, it can help with OC or weak PSU.
+- added temperature/fan monitoring for Linux version for gpu-pro drivers. Only monitoring is supported currently, not management.
+- "r" key reloads pools from epools.txt and dpools.txt in runtime.
+- fixed issue with wrong detection of card names.
+- systems with up to 32 GPUs are supported now (with some minor limitations).
+- Linux version: fixed issue with closing miner with "Ctrl-C".
+- several minor improvements and bug fixes.
+- EthMan: added "total online miners" and "total working gpus" info.
+- EthMan: added color and font size options for the list of miners.
+
+
+
+v7.1. This version is assumed to be stable, so it is not marked as "beta".
+---------------------------------------------------------------------
+
+- now "-etha 2" is set automatically for Linux and 4xx cards. You can change it by specifying "-etha" directly if necessary.
+- if miner manages fans, it returns management back to drivers at closing.
+- added text coloring in Linux version. You can use "-colors 0" option to disable it if necessary.
+- several minor improvements and bug fixes.
+- EthMan: added ability to start .bat file if miner has problems.
+- EthMan: added support for CryptoNote miner.
+
+
+
 v7.0
 ---------------------------------------------------------------------
 
