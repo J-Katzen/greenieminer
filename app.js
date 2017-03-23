@@ -1,8 +1,11 @@
+// @j-katzen
+// Main app
+//
 // config .env
-require('dotenv').config();
+require("dotenv").config();
 
-const ClaymoreMinerHandler = require('./lib/ClaymoreMinerHandler');
-const ProfitChecker = require('./lib/ProfitChecker');
+const ClaymoreMinerHandler = require("./lib/ClaymoreMinerHandler");
+const ProfitChecker = require("./lib/ProfitChecker");
 
 // var minerHandle = new MinerHandler();
 
@@ -18,28 +21,28 @@ const algoHashes = {
 };
 
 // pass algoHashes object and array of cointags to pick from. omitted ETH as good test
-var checker = new ProfitChecker(algoHashes, process.env.COINS);
+var checker = new ProfitChecker(algoHashes, process.env.COINS.split(","));
 
 // log out the max coin
-checker.getCoinProfitability().then(function(maxProfitCoin) {
-  console.log('=========================================');
-  console.log('GOT MOST PROFITABLE COIN BASED ON CONFIG');
-  console.log('=========================================');
+checker.getCoinProfitability().then((maxProfitCoin) => {
+  console.log("=========================================");
+  console.log("GOT MOST PROFITABLE COIN BASED ON CONFIG");
+  console.log("=========================================");
   console.log(maxProfitCoin);
 });
 
 // log out all the coins associated with this algorithm
 setTimeout(() => {
-  checker.getCoinsByAlgo('cryptonight').then(function(matchingCoins) {
-    console.log('=========================================');
-    console.log('GOT COINS BY ALGORITHM');
-    console.log('=========================================');
+  checker.getCoinsByAlgo("equihash").then((matchingCoins) => {
+    console.log("=========================================");
+    console.log("GOT COINS BY ALGORITHM");
+    console.log("=========================================");
     console.log(matchingCoins);
   });
-}, 5000);
+}, 1000);
 
 // Try spawning miner and in new cmd.exe window
-// var miner = new ClaymoreMinerHandler('ethash');
+// var miner = new ClaymoreMinerHandler("ethash");
 
 // test parse stats for miner using jsonrpc command
 // setTimeout(() => miner.parseMinerStats().then((data) => {
@@ -49,4 +52,4 @@ setTimeout(() => {
 // }), 20000);
 
 // test swapping miner to new algo
-// miner.swapMiner('equihash');
+// miner.swapMiner("equihash");

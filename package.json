@@ -1,9 +1,9 @@
 {
-  "name": "GreenieMiner",
+  "name": "greenie-miner",
   "version": "0.0.1",
   "description": "A nodejs script that will monitor whattomine.com for the most profitable coin. It can launch and autoswap Claymore's Ethash, Equihash, and CryptoNight miners.",
   "engines": {
-    "node": "v7.7.3"
+    "node": "7.7.3"
   },
   "main": "app.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "request-promise": "^4.2.0"
   },
   "devDependencies": {
-    "eslint": "^3.18.0"
+    "eslint": "^3.18.0",
+    "eslint-plugin-node": "^4.2.1"
   }
 }
