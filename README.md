@@ -1,8 +1,10 @@
 # greenieminer
 
-Claymore Dual ETH/SC/DCR/PASC Miner - https://drive.google.com/open?id=0B69wv2iqszefdFZUV2toUG5HdlU
+A nodejs script that will monitor [whattomine.com](http://whattomine.com/coins/) for the most profitable coin. It can launch and autoswap Claymore's Ethash, Equihash, and CryptoNight miners.
 
-Claymore Zcash Miner - https://drive.google.com/drive/folders/0B69wv2iqszefdmJickl5MF9BOEE?usp=sharing
+Claymore Dual ETH/SC/DCR/PASC Miner - [google drive link](https://drive.google.com/open?id=0B69wv2iqszefdFZUV2toUG5HdlU)
+
+Claymore Zcash Miner - [google drive link](https://drive.google.com/drive/folders/0B69wv2iqszefdmJickl5MF9BOEE?usp=sharing)
 
 Put miners into miners/ seperated by algo.
 
