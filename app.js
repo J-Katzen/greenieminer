@@ -6,8 +6,7 @@ const ProfitChecker = require('./lib/ProfitChecker');
 
 // var minerHandle = new MinerHandler();
 
-// setup hashes based on their uri for whattomine; will eventually
-// create a map to auto-translate from cointags
+// setup hashes for algo map
 const algoHashes = {
   ethash: process.env.ETHASH,
   equihash: process.env.EQUIHASH,
@@ -19,17 +18,25 @@ const algoHashes = {
 };
 
 // pass algoHashes object and array of cointags to pick from. omitted ETH as good test
-// var checker = new ProfitChecker(algoHashes, process.env.COINS);
+var checker = new ProfitChecker(algoHashes, process.env.COINS);
 
 // log out the max coin
-// checker.getCoinProfitability().then(function(maxProfitCoin) {
-//   console.log(maxProfitCoin);
-// });
+checker.getCoinProfitability().then(function(maxProfitCoin) {
+  console.log('=========================================');
+  console.log('GOT MOST PROFITABLE COIN BASED ON CONFIG');
+  console.log('=========================================');
+  console.log(maxProfitCoin);
+});
 
 // log out all the coins associated with this algorithm
-// checker.getCoinsByAlgo('cryptonight').then(function(matchingCoins) {
-//   console.log(matchingCoins);
-// });
+setTimeout(() => {
+  checker.getCoinsByAlgo('cryptonight').then(function(matchingCoins) {
+    console.log('=========================================');
+    console.log('GOT COINS BY ALGORITHM');
+    console.log('=========================================');
+    console.log(matchingCoins);
+  });
+}, 5000);
 
 // Try spawning miner and in new cmd.exe window
 // var miner = new ClaymoreMinerHandler('ethash');
