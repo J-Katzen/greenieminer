@@ -33,7 +33,7 @@ function createConfigMap(coins = []) {
       case "SC":
       case "LBRY":
       case "PASC":
-        // not really, but they use the ethash claymore miner
+        // not really, but they all use the ethash claymore miner
         minerToUse = "ethash";
         minerCommands = ["-dpool", "-dwal", "-dpsw"];
         break;
@@ -66,8 +66,3 @@ function createConfigMap(coins = []) {
 }
 
 module.exports = createConfigMap;
-
-// ETH_POOL=us1.ethermine.org:4444
-// ETH_WAL=0xff25927a4aa2f3cbc82b421eff036ffdb3e25ee8.Vegas
-// ETH_PSW=x
-// ETH_CUSTOM="-erate 0"
