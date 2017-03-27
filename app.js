@@ -24,15 +24,15 @@ const algoHashes = {
 
 const checkCronSchedule = process.env.PERIOD === "HOURLY"
   // every hour "* */1 * * *"
-  ? "*/1 * * * *"
+  ? "* */1 * * *"
   // every day "* * */1 * *"
-  : "*/2 * * * *";
+  : "* * */1 * *";
 
 
 const coins = process.env.COINS.split(",");
 const config = createConfigMap(coins);
 
-const miner = new ClaymoreMinerHandler(config['ETC'].miner, config['ETC'].minerArgs);
+const miner = new ClaymoreMinerHandler(config['ETH'].miner, config['ETH'].minerArgs);
 const profitChecker = new ProfitChecker(algoHashes, coins);
 
 schedule.scheduleJob(checkCronSchedule, () => {
