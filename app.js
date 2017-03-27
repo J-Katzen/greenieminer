@@ -32,14 +32,14 @@ const checkCronSchedule = process.env.PERIOD === "HOURLY"
 const coins = process.env.COINS.split(",");
 const config = createConfigMap(coins);
 
-const miner = new ClaymoreMinerHandler(config['ETH'].miner, config['ETH'].minerArgs);
+const miner = new ClaymoreMinerHandler(config['ETH'].miner, config['ETH'].minerArgs, 'ETH');
 const profitChecker = new ProfitChecker(algoHashes, coins);
 
 schedule.scheduleJob(checkCronSchedule, () => {
   console.log("======= RUNNING AUTOSWAP =========");
   profitChecker.getCoinProfitability().then((maxProfitCoin) => {
     console.log(`======= AUTOSWAPPING TO ${maxProfitCoin.tag} =========`);
-    miner.swapMiner(config[`${maxProfitCoin.tag}`].miner, config[`${maxProfitCoin.tag}`].minerArgs, maxProfitCoin.tag);
+    miner.swapMiner(config[`${maxProfitCoin.tag}`].miner, config[`${maxProfitCoin.tag}`].minerArgs, maxProfitCoin.tag, maxProfitCoin.tag);
   });
 });
 
