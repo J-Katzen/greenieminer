@@ -23,10 +23,10 @@ const algoHashes = {
 // const minerHandler = new ClaymoreMinerHandler()
 
 const checkCronSchedule = process.env.PERIOD === "HOURLY"
-  // every hour "* */1 * * *"
-  ? "* */1 * * *"
+  // every hour "0 * * * *"
+  ? "0 * * * *"
   // every day "* * */1 * *"
-  : "* * */1 * *";
+  : "0 0 * * *";
 
 
 const coins = process.env.COINS.split(",");
