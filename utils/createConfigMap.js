@@ -1,21 +1,6 @@
 // @j-katzen
 const _ = require("lodash");
 
-const minerMapCoins = {
-
-}
-const minerCommandMap = {
-  ethashCoins: ["ETH", "DCR", ""],
-  equihashCoins: ["ZEC", "ZCL", "ZDASH"],
-
-  ethash: {
-  },
-  equihash: {
-    coins: ["ZEC", "ZCL", "ZDASH"],
-
-  }
-}
-
 function createConfigMap(coins = []) {
   let coinMinerCommands = {};
   _.forEach(coins, (coin) => {
