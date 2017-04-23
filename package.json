@@ -1,29 +1,25 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "greenie-miner",
+  "version": "0.0.1",
+  "description": "A nodejs script that will monitor whattomine.com for the most profitable coin. It can launch and autoswap Claymore's Ethash, Equihash, and CryptoNight miners.",
   "engines": {
-    "node": "v7.7.3"
+    "node": "7.7.3"
   },
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "dependencies": {
-    "ejs": "2.4.1",
-    "express": "4.13.3",
+    "dotenv": "^4.0.0",
+    "jayson": "^2.0.3",
     "lodash": "^4.17.2",
-    "node-netcat": "^1.4.8",
-    "public-ip": "^2.3.3"
+    "node-schedule": "^1.2.1",
+    "public-ip": "^2.3.3",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-plugin-node": "^4.2.1"
+  }
 }
